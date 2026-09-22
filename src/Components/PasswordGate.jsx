@@ -3,7 +3,7 @@ import { SITE_PASSWORD } from "./data";
 
 const STORAGE_KEY = "sabrina-page-unlocked";
 
-export default function PasswordGate({ children }) {
+export default function PasswordGate({ children, onUnlock }) {
   const [unlocked, setUnlocked] = useState(false);
   const [value, setValue] = useState("");
   const [shake, setShake] = useState(false);
@@ -31,6 +31,9 @@ export default function PasswordGate({ children }) {
       } catch (e) {
         // ignore if storage isn't available
       }
+      // Called synchronously within this click handler so the browser still
+      // counts it as a user gesture, which is required to start audio playback.
+      if (onUnlock) onUnlock();
     } else {
       setShake(true);
       setTimeout(() => setShake(false), 500);

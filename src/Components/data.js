@@ -38,5 +38,6 @@ export const TIMELINE = [
 ];
 
 export const SITE_PASSWORD = "JUNE15";
+export const MUSIC_SRC = "/music.mp3";
 
 export const CONFETTI_EMOJI = ["🤍", "✨", "🕊️", "🌸", "💫", "🐾", "🐈"];
