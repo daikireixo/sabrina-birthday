@@ -20,22 +20,27 @@ export const PHOTOS = [
 
 export const TIMELINE = [
   {
-    date: "August 2024",
+    date: "August 2025",
     title: "We met on HelloTalk",
     text: "Where we started bashing random Indians, sharing cat reels, and talking about cats way too much. 😂🐱Little did I know that this random HelloTalk girl would become someone so adorable and special to me",
   },
   {
-    date: "April 17",
+    date: "April 17, 2026",
     title: "We started talking again",
     text: "After a long time, we meet again and start talking again.",
   },
   {
-    date: "June 09",
+    date: "June 09, 2026",
     title: "We met in person for the first time",
-    text: "Was So excited to meet you in person for the first time. I was so nervous but you made me feel comfortable and we had a great time together. 🥰",
+    text: "Was So excited to meet you in person for the first time. I was so nervous but you made me feel comfortable and I had a great time together. 🥰",
   },
   {
-    date: "September 25",
+    date: "June 15, 2026",
+    title: "We kissed for the first time",
+    text: "Kissing you for the first time was a moment I'll never forget. It was magical and made me realize how much I care about you. 💖",
+  },
+  {
+    date: "September 25, 2026",
     title: "Sabrina's birthday",
     text: "Another year of the cutest cat mom, the sweetest laughs, and the adorable person you are. 🐱❤️Happy birthday, Sabrina — here’s to another year of you being wonderfully you",
     future: true,
