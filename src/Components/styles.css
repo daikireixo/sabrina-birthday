@@ -1,0 +1,525 @@
+/* Add this to your index.html <head> to load the fonts:
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+*/
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --wine: #3A1220;
+  --wine-deep: #250B14;
+  --blush: #F3E1DD;
+  --ivory: #FBF4EF;
+  --gold: #C6A15B;
+  --gold-soft: #DCC08C;
+  --ink: #2A1216;
+  --line: rgba(198, 161, 91, 0.35);
+}
+
+.page {
+  background: var(--ivory);
+  color: var(--ink);
+  font-family: "Jost", sans-serif;
+  font-weight: 300;
+  width: 100%;
+  overflow-x: hidden;
+}
+.page img {
+  max-width: 100%;
+  display: block;
+}
+.page h1,
+.page h3,
+.display {
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 500;
+}
+.page .section {
+  padding: 6rem 1.5rem;
+  max-width: 760px;
+  margin: 0 auto;
+}
+@media (max-width: 640px) {
+  .page .section {
+    padding: 4rem 1.25rem;
+  }
+}
+
+/* HERO */
+.hero {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: radial-gradient(120% 90% at 50% 0%, #4a1826 0%, var(--wine) 45%, var(--wine-deep) 100%);
+  color: var(--blush);
+  padding: 2rem 1.5rem;
+}
+.hero-eyebrow {
+  font-size: clamp(0.75rem, 2.4vw, 0.95rem);
+  letter-spacing: 0.14em;
+  color: var(--gold-soft);
+  margin-bottom: 1.2rem;
+  padding: 0 0.5rem;
+}
+.hero h1 {
+  font-size: clamp(2.75rem, 14vw, 6.2rem);
+  line-height: 1;
+  margin: 0;
+}
+.hero .sub {
+  margin-top: 1.4rem;
+  font-size: clamp(1rem, 2.4vw, 1.25rem);
+  max-width: 34ch;
+  padding: 0 0.5rem;
+}
+@media (max-width: 380px) {
+  .hero-eyebrow {
+    letter-spacing: 0.08em;
+  }
+}
+
+/* CANDLE + WISH */
+.wish-block {
+  margin-top: 3.4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.candle {
+  position: relative;
+  width: 46px;
+  height: 120px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.candle .stick {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 26px;
+  height: 84px;
+  border-radius: 3px;
+  background: repeating-linear-gradient(180deg, var(--gold-soft) 0 10px, var(--blush) 10px 20px);
+  box-shadow: inset 0 0 0 1px rgba(198, 161, 91, 0.5);
+}
+.candle .num {
+  position: absolute;
+  bottom: 26px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 600;
+  font-size: 1.15rem;
+  color: var(--wine-deep);
+  letter-spacing: -0.02em;
+}
+.candle .wick {
+  position: absolute;
+  bottom: 84px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 12px;
+  background: #3a2a1a;
+  transition: opacity 0.6s ease;
+}
+.candle .flame {
+  position: absolute;
+  bottom: 94px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 15px;
+  height: 24px;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  background: radial-gradient(circle at 50% 70%, #fff4d6 0%, var(--gold) 45%, #b5442a 90%);
+  box-shadow: 0 0 18px 4px rgba(230, 180, 90, 0.55);
+  animation: flicker 1.6s ease-in-out infinite;
+  transform-origin: bottom center;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+@keyframes flicker {
+  0%,
+  100% {
+    transform: translateX(-50%) rotate(-2deg) scaleY(1);
+  }
+  50% {
+    transform: translateX(-50%) rotate(3deg) scaleY(1.08);
+  }
+}
+.candle.blown .flame {
+  opacity: 0;
+  transform: translateX(-50%) translateY(-14px) scale(0.3);
+}
+.candle.blown .wick {
+  opacity: 0.4;
+}
+.wish-hint {
+  margin-top: 1.1rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  color: rgba(243, 225, 221, 0.6);
+}
+.wish-hint.granted {
+  color: var(--gold-soft);
+}
+
+.confetti-piece {
+  position: fixed;
+  top: -20px;
+  pointer-events: none;
+  z-index: 999;
+  animation: fall linear forwards;
+}
+@keyframes fall {
+  to {
+    transform: translateY(105vh) rotate(360deg);
+    opacity: 0.9;
+  }
+}
+
+/* MESSAGE */
+.message {
+  text-align: center;
+}
+.kicker {
+  color: var(--gold);
+  font-size: 0.95rem;
+  letter-spacing: 0.06em;
+  margin-bottom: 1rem;
+}
+.kicker.center {
+  text-align: center;
+}
+.message p {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(1.35rem, 3vw, 1.75rem);
+  line-height: 1.55;
+  margin: 0 0 1.3rem;
+}
+.signoff {
+  margin-top: 2rem;
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 1.3rem;
+  color: var(--wine);
+}
+
+/* PAW DIVIDER */
+.paw-divider {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 1.1rem;
+  margin: 2.6rem auto;
+  opacity: 0.75;
+}
+.paw-divider svg {
+  width: 16px;
+  height: 16px;
+  fill: var(--gold);
+}
+.paw-divider svg:nth-child(1) {
+  transform: translateY(2px) rotate(-8deg);
+  opacity: 0.5;
+}
+.paw-divider svg:nth-child(2) {
+  transform: translateY(-3px) rotate(4deg);
+}
+.paw-divider svg:nth-child(3) {
+  transform: translateY(1px) rotate(-4deg);
+  opacity: 0.5;
+}
+
+/* GALLERY */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.9rem;
+  margin-top: 2.6rem;
+}
+.ph {
+  aspect-ratio: 3 / 4;
+  border-radius: 2px;
+  border: 1px solid var(--line);
+  background: linear-gradient(135deg, rgba(198, 161, 91, 0.18), rgba(58, 18, 32, 0.06)),
+    repeating-linear-gradient(45deg, rgba(58, 18, 32, 0.05) 0 2px, transparent 2px 14px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  color: var(--wine);
+  opacity: 0.55;
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 0.95rem;
+}
+.ph img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 1;
+}
+@media (max-width: 560px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.7rem;
+  }
+}
+@media (max-width: 340px) {
+  .gallery-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+  }
+  .ph {
+    font-size: 0.8rem;
+  }
+}
+
+/* CAT CORNER */
+.cat-corner {
+  text-align: center;
+  padding-top: 1rem;
+}
+.cat-frame {
+  position: relative;
+  width: clamp(160px, 50vw, 220px);
+  aspect-ratio: 1;
+  margin: 2rem auto 1.4rem;
+  border-radius: 50%;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(198, 161, 91, 0.18), rgba(58, 18, 32, 0.06)),
+    repeating-linear-gradient(45deg, rgba(58, 18, 32, 0.05) 0 2px, transparent 2px 14px);
+  border: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--wine);
+  opacity: 0.6;
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+}
+.cat-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 1;
+}
+.cat-frame .badge {
+  position: absolute;
+  bottom: 4px;
+  right: 8px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--wine);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+.cat-corner .caption {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--wine);
+}
+.cat-corner .sub-caption {
+  font-size: 0.85rem;
+  color: #8a6a6f;
+  margin-top: 0.3rem;
+}
+
+/* TIMELINE */
+.timeline-wrap {
+  padding-top: 5rem;
+  padding-bottom: 7rem;
+}
+.timeline {
+  position: relative;
+  margin-top: 3.5rem;
+  padding-left: 2.2rem;
+}
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 6px;
+  bottom: 6px;
+  width: 1px;
+  background: linear-gradient(var(--gold), var(--blush));
+  opacity: 0.55;
+}
+.tl-item {
+  position: relative;
+  padding-bottom: 3rem;
+}
+.tl-item:last-child {
+  padding-bottom: 0;
+}
+.tl-item::before {
+  content: "";
+  position: absolute;
+  left: -2.2rem;
+  top: 0.35rem;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--ivory);
+  border: 1.5px solid var(--gold);
+}
+.tl-date {
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+  margin-bottom: 0.3rem;
+}
+.tl-item h3 {
+  font-size: clamp(1.3rem, 4.5vw, 1.6rem);
+  margin: 0 0 0.4rem;
+  color: var(--wine);
+}
+.tl-item p {
+  margin: 0;
+  font-size: 0.98rem;
+  line-height: 1.65;
+  color: #4a3238;
+  max-width: 46ch;
+}
+.tl-item.future h3 {
+  color: var(--gold);
+}
+.tl-item.future::before {
+  background: var(--gold);
+  border-color: var(--gold);
+}
+@media (max-width: 400px) {
+  .timeline-wrap {
+    padding-top: 3.5rem;
+    padding-bottom: 4.5rem;
+  }
+  .timeline {
+    padding-left: 1.6rem;
+  }
+  .tl-item::before {
+    left: -1.6rem;
+  }
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 4rem 1.5rem 5rem;
+  background: var(--wine-deep);
+  color: rgba(243, 225, 221, 0.55);
+}
+footer .display {
+  color: var(--blush);
+  font-size: 1.6rem;
+  margin-bottom: 0.6rem;
+}
+footer .small {
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+}
+
+/* LOCK SCREEN */
+.lock-screen {
+  min-height: 100svh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(120% 90% at 50% 0%, #4a1826 0%, var(--wine) 45%, var(--wine-deep) 100%);
+  padding: 2rem 1.25rem;
+}
+.lock-card {
+  text-align: center;
+  max-width: 340px;
+  width: 100%;
+}
+.lock-card.shake {
+  animation: shake 0.5s ease;
+}
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20%,
+  60% {
+    transform: translateX(-8px);
+  }
+  40%,
+  80% {
+    transform: translateX(8px);
+  }
+}
+.lock-icon {
+  font-size: 1.8rem;
+  margin-bottom: 0.8rem;
+  opacity: 0.85;
+}
+.lock-title {
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 500;
+  font-size: clamp(2rem, 8vw, 2.6rem);
+  color: var(--blush);
+  margin-bottom: 0.6rem;
+}
+.lock-sub {
+  font-family: "Jost", sans-serif;
+  font-weight: 300;
+  font-size: 0.95rem;
+  color: rgba(243, 225, 221, 0.75);
+  margin: 0 0 2rem;
+  line-height: 1.5;
+}
+.lock-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+.lock-input {
+  width: 100%;
+  padding: 0.85rem 1.1rem;
+  border-radius: 2px;
+  border: 1px solid var(--line);
+  background: rgba(251, 244, 239, 0.06);
+  color: var(--blush);
+  font-family: "Jost", sans-serif;
+  font-size: 1rem;
+  text-align: center;
+  outline: none;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+.lock-input::placeholder {
+  color: rgba(243, 225, 221, 0.4);
+}
+.lock-input:focus {
+  border-color: var(--gold);
+  background: rgba(251, 244, 239, 0.1);
+}
+.lock-button {
+  padding: 0.85rem 1.1rem;
+  border-radius: 2px;
+  border: 1px solid var(--gold);
+  background: transparent;
+  color: var(--gold-soft);
+  font-family: "Jost", sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.lock-button:hover {
+  background: var(--gold);
+  color: var(--wine-deep);
+}
