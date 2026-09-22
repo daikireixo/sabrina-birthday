@@ -20,6 +20,8 @@ export default function Hero() {
       <div className="hero-eyebrow">Happy Birthday!</div>
       <h1>Sabrina</h1>
       <p className="sub">A little corner of the internet, made just to celebrate you.</p>
+      <p className="sub">      May Allah bless you with endless happiness, good health, peace, and success. May He protect you, guide you toward everything good, and grant all the beautiful wishes in your heart.</p>
+
       <div className="wish-block">
         <div className={`candle ${blown ? "blown" : ""}`} onClick={makeWish}>
           <div className="flame" />

@@ -3,7 +3,7 @@ export const MESSAGE = [
 
   "Who would've thought an app meant for practicing languages would lead to us bashing Indians together, sharing endless cat reels, and having way too many conversations about cats? 😂",
 
-  "Somewhere along the way, I got to know the adorable person behind all those messages — and discovered that you're not just a cat lover, but genuinely the best cat mom. 🐱❤️",
+  "Somewhere along the way, I got to know the adorable person behind all those messages and discovered that you're not just a cat lover, but genuinely the best cat mom. 🐱❤️",
 
   "Here's to another year of your cute laugh, your voice messages, your infectious energy, and the adorable way you make ordinary conversations feel like something worth looking forward to.",
 ];
