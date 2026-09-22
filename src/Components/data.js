@@ -30,6 +30,11 @@ export const TIMELINE = [
     text: "After a long time, we meet again and start talking again.",
   },
   {
+    date: "June 09",
+    title: "We met in person for the first time",
+    text: "Was So excited to meet you in person for the first time. I was so nervous but you made me feel comfortable and we had a great time together. 🥰",
+  },
+  {
     date: "September 25",
     title: "Sabrina's birthday",
     text: "Another year of the cutest cat mom, the sweetest laughs, and the adorable person you are. 🐱❤️Happy birthday, Sabrina — here’s to another year of you being wonderfully you",
