@@ -49,19 +49,19 @@ export default function PasswordGate({ children, onUnlock }) {
     <div className="lock-screen">
       <div className={`lock-card ${shake ? "shake" : ""}`}>
         <div className="lock-icon">🔒</div>
-        <div className="lock-title">Thank you for playing with my feelings</div>
-        <p className="lock-sub">Some doors stay closed when the heart has been left behind.</p>
+        <div className="lock-title">For Sabrina</div>
+        <p className="lock-sub">This one's just for you. Enter the password to open it.</p>
         <form onSubmit={submit}>
           <input
             type="text"
             value={value}
             onChange={(e) => setValue(e.target.value)}
-            placeholder="..."
+            placeholder="password"
             autoFocus
             className="lock-input"
           />
           <button type="submit" className="lock-button">
-            Open the door
+            Unlock
           </button>
         </form>
       </div>
